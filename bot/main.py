@@ -20,7 +20,8 @@ async def on_message(message):
     # Fetch target channels
     target1_channel = guild.get_channel(951638778160750603)
     # Fetch target roles
-    role_2 = guild.get_role(953020148623749191)
+    role_1 = guild.get_role(953020148623749191)
+    # role_2 = guild.get_role(953020148623749191)
 
     if role_1 in message.role_mentions:
         msg = message.content.strip(f"<@&{role_1.id}>")
@@ -34,43 +35,13 @@ async def on_message(message):
         embed.set_author(
             name=message.author.display_name, icon_url=message.author.avatar_url
         )
-        await target2_channel.send(embed=embed)
+        await target1_channel.send(embed=embed)
         await message.channel.send(embed=embed)
 
     elif role_2 in message.role_mentions:
         msg = message.content.strip(f"<@&{role_2.id}>")
         embed = discord.Embed(title=msg, color=0xe0dd12, timestamp=datetime.now())
         embed.add_field(name="Trade Type:", value=role_2.mention)
-        embed.set_author(
-            name=message.author.display_name, icon_url=message.author.avatar_url
-        )
-        await target1_channel.send(embed=embed)
-        await message.channel.send(embed=embed)
-
-    elif role_3 in message.role_mentions:
-        msg = message.content.strip(f"<@&{role_3.id}>")
-        embed = discord.Embed(title=msg, color=0x782ea6, timestamp=datetime.now())
-        embed.add_field(name="Trade Type:", value=role_3.mention)
-        embed.set_author(
-            name=message.author.display_name, icon_url=message.author.avatar_url
-        )
-        await target1_channel.send(embed=embed)
-        await message.channel.send(embed=embed)
-        
-    elif role_4 in message.role_mentions:
-        msg = message.content.strip(f"<@&{role_4.id}>")
-        embed = discord.Embed(title=msg, color=0xc45a25, timestamp=datetime.now())
-        embed.add_field(name="Trade Type:", value=role_4.mention)
-        embed.set_author(
-            name=message.author.display_name, icon_url=message.author.avatar_url
-        )
-        await target1_channel.send(embed=embed)
-        await message.channel.send(embed=embed)
-        
-    elif role_5 in message.role_mentions:
-        msg = message.content.strip(f"<@&{role_5.id}>")
-        embed = discord.Embed(title=msg, color=0xe31e87, timestamp=datetime.now())
-        embed.add_field(name="Trade Type:", value=role_5.mention)
         embed.set_author(
             name=message.author.display_name, icon_url=message.author.avatar_url
         )
