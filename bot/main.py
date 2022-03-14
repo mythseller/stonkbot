@@ -18,9 +18,9 @@ async def on_message(message):
         return
     guild = message.guild
     # Fetch target channels
-    target1_channel = guild.get_channel(879466084116336660)
+    target1_channel = guild.get_channel(951638778160750603)
     # Fetch target roles
-    role_1 = guild.get_role(942052888333676634)
+    role_2 = guild.get_role(953020148623749191)
 
     if role_1 in message.role_mentions:
         msg = message.content.strip(f"<@&{role_1.id}>")
@@ -39,7 +39,7 @@ async def on_message(message):
 
     elif role_2 in message.role_mentions:
         msg = message.content.strip(f"<@&{role_2.id}>")
-        embed = discord.Embed(title=msg, color=0x349434, timestamp=datetime.now())
+        embed = discord.Embed(title=msg, color=0xe0dd12, timestamp=datetime.now())
         embed.add_field(name="Trade Type:", value=role_2.mention)
         embed.set_author(
             name=message.author.display_name, icon_url=message.author.avatar_url
