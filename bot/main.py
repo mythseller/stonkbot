@@ -19,17 +19,8 @@ async def on_message(message):
     guild = message.guild
     # Fetch target channels
     target1_channel = guild.get_channel(879466084116336660)
-    target2_channel = guild.get_channel(882606056184897536)
-    target3_channel = guild.get_channel(879468481492447254)
-    target4_channel = guild.get_channel(879467246953570305)
     # Fetch target roles
     role_1 = guild.get_role(942052888333676634)
-    role_2 = guild.get_role(942051860167159819)
-    role_3 = guild.get_role(942052324615004250)
-    role_4 = guild.get_role(942052501228777493)
-    role_5 = guild.get_role(942052699921321984)
-    role_6 = guild.get_role(942052789100617728)
-    role_7 = guild.get_role(950706317482410015)
 
     if role_1 in message.role_mentions:
         msg = message.content.strip(f"<@&{role_1.id}>")
@@ -86,24 +77,7 @@ async def on_message(message):
         await target1_channel.send(embed=embed)
         await message.channel.send(embed=embed)
         
-    elif role_6 in message.role_mentions:
-        msg = message.content.strip(f"<@&{role_6.id}>")
-        embed = discord.Embed(title=msg, color=0xe0dd12, timestamp=datetime.now())
-        embed.add_field(name="Trade Type:", value=role_6.mention)
-        embed.set_author(
-            name=message.author.display_name, icon_url=message.author.avatar_url
-        )
-        await target3_channel.send(embed=embed)
    
-    elif role_7 in message.role_mentions:
-        msg = message.content.strip(f"<@&{role_7.id}>")
-        embed = discord.Embed(title=msg, color=0xe31e87, timestamp=datetime.now())
-        embed.add_field(name="No one cared who I was until I put on the mask and went", value=role_7.mention)
-        embed.set_author(
-            name=message.author.display_name, icon_url=message.author.avatar_url
-        )
-        await target4_channel.send(embed=embed)
-        await message.channel.send(embed=embed)
 
         
 @bot.command()
