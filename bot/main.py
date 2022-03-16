@@ -34,6 +34,8 @@ async def on_message(message):
         embed.set_author(
             name=message.author.display_name, icon_url=message.author.avatar_url
         )
+        noti1 = await target1_channel.send(msg + " -- " + "<@&953020148623749191>")
+        await noti1.delete()
         await target1_channel.send(embed=embed)
 
     elif role_2 in message.role_mentions:
