@@ -3,7 +3,10 @@ import discord
 from datetime import datetime
 from discord.ext import commands
 
-bot = commands.Bot(command_prefix="!")
+intents = discord.Intents.default()
+intents.messages = True
+
+bot = commands.Bot(command_prefix="!", intents = intents)
 TOKEN = os.getenv("DISCORD_TOKEN")
 
 
@@ -34,7 +37,7 @@ async def on_message(message):
         embed.set_author(
             name=message.author.display_name, icon_url=message.author.avatar_url
         )
-        noti1 = await target1_channel.send(msg + " -- " + "<@&953020148623749191>")
+        noti1 = await target1_channel.send(msg + " - " + "<@&953020148623749191>")
         await noti1.delete()
         await target1_channel.send(embed=embed)
 
