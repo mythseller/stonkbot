@@ -39,7 +39,9 @@ async def on_message(message):
         )
         noti1 = await target1_channel.send(msg + " - " + "<@&953020148623749191>")
         await noti1.delete()
-        await target1_channel.send(embed=embed)
+        message = await target1_channel.send(embed=embed)
+        await target.add_reaction("👍")
+        
 
     elif role_2 in message.role_mentions:
         msg = message.content.strip(f"<@&{role_2.id}>")
@@ -51,7 +53,20 @@ async def on_message(message):
         await target1_channel.send(embed=embed)
         await message.channel.send(embed=embed)
         
-   
+@bot.listen()
+async def on_message(message):
+  '''simple on message to respond if a message containing "hello" is sent'''
+  # prevent bot from answering other bots, including self
+  if message.author.bot:
+     return
+  # create message content and channel variables
+  content = message.content.lower()
+  channel = message.channel
+  # check if message includes "hello"
+  if 'did we do today' in content:
+    msg = await channel.send('yeah, you bank on these dank callouts or fuck it up?')
+    await msg.add_reaction("🟢")
+    await msg.add_reaction("🔴")
 
         
 @bot.command()
