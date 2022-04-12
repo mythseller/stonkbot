@@ -33,7 +33,7 @@ async def on_message(message):
             color=0xe0dd12,
             timestamp=datetime.now(),
         )
-        embed.add_field(name="Trade type:", value=role_1.mention)
+        embed.add_field(name="Trade type:", value="Futures")
         embed.set_author(
             name=message.author.display_name, icon_url=message.author.avatar_url
         )
