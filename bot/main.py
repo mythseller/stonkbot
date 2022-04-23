@@ -62,7 +62,12 @@ async def on_message(message):
         
     elif commentary_role in message.role_mentions:
         msg = message.content.strip(f"<@&{commentary_role.id}>")
-        embed = discord.Embed(title=msg, color=0x9b59b6, timestamp=datetime.now())
+        embed = discord.Embed(
+            title="** **",
+            description=msg,
+            color=0x187bcd,
+            timestamp=datetime.now(),
+        )
         # embed.add_field(name="Trade Type:", value="Options Play")
         embed.set_author(
             name=message.author.display_name, icon_url=message.author.avatar_url
