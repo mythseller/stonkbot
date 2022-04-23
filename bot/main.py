@@ -21,13 +21,14 @@ async def on_message(message):
         return
     guild = message.guild
     # Fetch target channels
-    target1_channel = guild.get_channel(951638778160750603)
+    futures_channel = guild.get_channel(951638778160750603)
+    options_channel = guild.get_channel(967359150176747621)
     # Fetch target roles
-    role_1 = guild.get_role(953020148623749191)
-    # role_2 = guild.get_role(953020148623749191)
+    futures_role = guild.get_role(953020148623749191)
+    options_role = guild.get_role(967361125068972043)
 
-    if role_1 in message.role_mentions:
-        msg = message.content.strip(f"<@&{role_1.id}>")
+    if futures_role in message.role_mentions:
+        msg = message.content.strip(f"<@&{futures_role.id}>")
         embed = discord.Embed(
             title=msg,
             color=0xe0dd12,
@@ -37,21 +38,25 @@ async def on_message(message):
         embed.set_author(
             name=message.author.display_name, icon_url=message.author.avatar_url
         )
-        noti1 = await target1_channel.send(msg + " - " + "<@&953020148623749191>")
-        await noti1.delete()
-        message = await target1_channel.send(embed=embed)
-        await target.add_reaction("👍")
+        embed.set_thumbnail(url=message.author.avatar_url)
+        noti = await futures_channel.send(msg + " - " + f"<@&{futures_role.id}>")
+        await noti.delete()
+        message = await futures_channel.send(embed=embed)
+        await message.add_reaction("👍")
         
 
-    elif role_2 in message.role_mentions:
-        msg = message.content.strip(f"<@&{role_2.id}>")
-        embed = discord.Embed(title=msg, color=0xe0dd12, timestamp=datetime.now())
-        embed.add_field(name="Trade Type:", value=role_2.mention)
+    elif options_role in message.role_mentions:
+        msg = message.content.strip(f"<@&{options_role.id}>")
+        embed = discord.Embed(title=msg, color=0x9b59b6, timestamp=datetime.now())
+        embed.add_field(name="Trade Type:", value="Options Play")
         embed.set_author(
             name=message.author.display_name, icon_url=message.author.avatar_url
         )
-        await target1_channel.send(embed=embed)
-        await message.channel.send(embed=embed)
+        embed.set_thumbnail(url=message.author.avatar_url)
+        noti = await futures_channel.send(msg + " - " + f"<@&{options_role.id}>")
+        await noti.delete()
+        message = await options_channel.send(embed=embed)
+        await message.add_reaction("👍")
         
 @bot.listen()
 async def on_message(message):
